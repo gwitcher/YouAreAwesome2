@@ -21,7 +21,11 @@ struct ContentView: View {
                 .fontWeight(.heavy)
                 .foregroundStyle(Color.red)
             Button("Click Me!") {
-                message = "Awesome!"
+                if message == "I am a Developer!" {
+                    message = "Awesome!"
+                } else {
+                    message = "I am a Developer!"
+                }
             }
             
             
