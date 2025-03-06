@@ -37,23 +37,12 @@ struct ContentView: View {
             Spacer()
             
             Button("Show Message", action: {
-                let messages = ["Hi!", "You are here", "This is what happens", "Do you see what happens, Larry?", "This is what happens when you meet a stranger in the alps???"]
+                let messages = ["Pilar?", "Bulk of the Series", "This is what happens", "Do you see what happens, Larry?", "This is what happens when you meet a stranger in the alps???"]
                 
-                imageName = "image\(imageNumber)"
-                imageNumber += 1
-                
-                if imageNumber > 9 {
-                    imageNumber = 0
-                }
-                message = messages[messageNumber]
-                messageNumber += 1
-                
-                if messageNumber == messages.count {
-                    messageNumber = 0
-                }
-                
-               // message = (message == message1 ? message2 : message1 )
-                //imageName = (imageName == imageString1 ? imageString2 : imageString1)
+                imageName = "image\(Int.random(in: 0...9))"
+
+                message = messages[Int.random(in: 0...messages.count - 1)]
+  
                 
                 
             })
