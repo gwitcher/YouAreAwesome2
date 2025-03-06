@@ -16,24 +16,30 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            Spacer()
-            Image("image\(imageNumber)")
-                .resizable()
-                .scaledToFit()
-                .clipShape(RoundedRectangle(cornerRadius: 30))
-                .shadow(radius: 30)
-            
             Text(message)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundStyle(.red)
                 .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.5)
+                .frame(height: 120)
+                .animation(.easeInOut(duration:0.15), value: message)
+            
+            Image(imageName)
+                .resizable()
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .shadow(radius: 30)
+                .animation(.default, value: imageName)
+            
+            
             
             Spacer()
             
             Button("Show Message", action: {
-                let messages = ["Hi!", "You are here", "This is what happens", "Do you see what happens, Larry?", "This is what happens when you meet a stranger in the alps"]
-   
+                let messages = ["Hi!", "You are here", "This is what happens", "Do you see what happens, Larry?", "This is what happens when you meet a stranger in the alps???"]
+                
+                imageName = "image\(imageNumber)"
                 imageNumber += 1
                 
                 if imageNumber > 9 {
