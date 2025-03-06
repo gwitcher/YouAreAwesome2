@@ -10,12 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @State private var message = ""
     @State private var imageName = ""
+    @State private var imageNumber = 0
+    @State private var messageNumber = 0
     
     var body: some View {
         
         VStack {
             Spacer()
-            Image(imageName)
+            Image("image\(imageNumber)")
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 30))
@@ -25,17 +27,29 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundStyle(.red)
+                .multilineTextAlignment(.center)
             
             Spacer()
             
-            Button("Press Me", action: {
-                let message1 = "You are Great!"
-                let message2 = "You Are Awesome!"
-                let imageString1 = "image0"
-                let imageString2 = "image1"
+            Button("Show Message", action: {
+                let messages = ["Hi!", "You are here", "This is what happens", "Do you see what happens, Larry?", "This is what happens when you meet a stranger in the alps"]
+   
+                imageNumber += 1
                 
-                message = (message == message1 ? message2 : message1 )
-                imageName = (imageName == imageString1 ? imageString2 : imageString1)
+                if imageNumber > 9 {
+                    imageNumber = 0
+                }
+                message = messages[messageNumber]
+                messageNumber += 1
+                
+                if messageNumber == messages.count {
+                    messageNumber = 0
+                }
+                
+               // message = (message == message1 ? message2 : message1 )
+                //imageName = (imageName == imageString1 ? imageString2 : imageString1)
+                
+                
             })
             .buttonStyle(.borderedProminent)
             .font(.title2)
