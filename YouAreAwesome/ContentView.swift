@@ -55,6 +55,8 @@ struct ContentView: View {
                                 audioPlayer.stop()
                         }
                     }
+                    .tint(.blue)
+                
                 
                 Spacer()
                 
@@ -112,6 +114,12 @@ struct ContentView: View {
     
 }
 
-#Preview {
+#Preview("Light Mode"){
     ContentView()
+        .preferredColorScheme(.light)
 }
+#Preview("Dark Mode"){
+    ContentView()
+        .preferredColorScheme(.dark)
+}
+
